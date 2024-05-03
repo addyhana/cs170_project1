@@ -33,16 +33,20 @@ class Algorithms:
         while not frontier.empty():
             curr_state = frontier.get()[1]
             #add current state as the key to dictionary
-            tuple_state = tuple(tuple(row) for row in curr_state)
-            print(tuple_state)
-            print("---------")
+            curr_state_tuple = tuple(tuple(row) for row in curr_state)
+            #print(tuple_state)
+            #print("---------")
             
             path.append(curr_state)
             
             if np.array_equal(curr_state, self.goal_state):
                 #print("found ucs goal")
                 #return path
-                #print(pathDict)
+                
+                
+                
+                
+                print(pathDict)
                 return ("path")
             
             explored.append(curr_state)
@@ -70,7 +74,9 @@ class Algorithms:
                             order_determiner += 1
                             frontier.put((depth + order_determiner, move))
                             #add the kid to the dictionary as well
-                            pathDict.setdefault(tuple_state, []).append(move)
+                            tuple_kid = tuple(tuple(row) for row in move)
+                            pathDict[tuple_kid] = curr_state_tuple
+                            #pathDict.setdefault(tuple_state, []).append(move)
                             
 
         return None
