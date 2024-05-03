@@ -5,7 +5,7 @@ class Node:
                  state,
                  g_value, #be careful about type here
                  h_value,
-                 parent) -> None:
+                 ) -> None:
         """_summary_
 
         Args:
@@ -15,10 +15,10 @@ class Node:
             
         """
         self.state = state
-        self.g_value = g_value
+        self.g_value = 0
         self.h_value = h_value
         self.f_value = g_value + h_value #or g_value + f_value but then dont make it a parameter? 
         self.parent = None
-        self.next = None 
+        
         
         
