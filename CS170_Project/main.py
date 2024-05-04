@@ -26,14 +26,25 @@ goal_state = state.set_goal()
 #print(new_state)
 
 
-search = Algorithms(initial_state=state.set_start(start = np.array([[1, 2, 3], 
-                                            [4, 5, 6], 
-                                            [7, 8, 0]
+# search = Algorithms(initial_state=state.set_start(start = np.array([[1, 2, 3], 
+#                                             [4, 5, 6], 
+#                                             [7, 8, 0]
+#                                         ])),
+#                     goal_state=goal_state)
+
+# solution = search.ucs()
+# print("trivial:")
+# for i in solution:
+#     print(f"{i}\n")
+
+search = Algorithms(initial_state=state.set_start(start = np.array([[1, 2, 0], 
+                                            [4, 5, 3], 
+                                            [7, 8, 6]
                                         ])),
                     goal_state=goal_state)
 
 solution = search.ucs()
-print("trivial:")
+print("easy:")
 for i in solution:
     print(f"{i}\n")
 
@@ -43,7 +54,7 @@ search = Algorithms(initial_state=state.set_start(start = np.array([[1, 2, 0],
                                         ])),
                     goal_state=goal_state)
 
-solution = search.ucs()
+solution = search.missingTile()
 print("easy:")
 for i in solution:
     print(f"{i}\n")
@@ -59,13 +70,24 @@ print("doable:")
 for i in solution:
     print(f"{i}\n")
 
-search = Algorithms(initial_state=state.set_start(start = np.array([[8, 7, 1], 
-                                            [6, 0, 2], 
-                                            [5, 4, 3]
+search = Algorithms(initial_state=state.set_start(start = np.array([[0, 1, 2], 
+                                            [4, 5, 3], 
+                                            [7, 8, 6]
                                         ])),
                     goal_state=goal_state)
 
-solution = search.ucs()
-print("oh boy:")
+solution = search.missingTile()
+print("doable:")
 for i in solution:
     print(f"{i}\n")
+
+# search = Algorithms(initial_state=state.set_start(start = np.array([[8, 7, 1], 
+#                                             [6, 0, 2], 
+#                                             [5, 4, 3]
+#                                         ])),
+#                     goal_state=goal_state)
+
+# solution = search.ucs()
+# print("oh boy:")
+# for i in solution:
+#     print(f"{i}\n")

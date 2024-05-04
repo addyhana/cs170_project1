@@ -113,5 +113,7 @@ class State:
     def heuristic(self):
         goal = self.set_goal()
         boxes_away = np.sum(self.current_state != goal)
+        if boxes_away > 0: 
+            boxes_away = boxes_away - 1
         return boxes_away
         
