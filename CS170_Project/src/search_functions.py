@@ -30,7 +30,13 @@ class Algorithms:
         depth_map = {}    # stores depths of each state
         order_determiner = 0
         num_nodes = 0 
-        biggest_queue = 0 
+        biggest_queue = 0
+        validState = 0 
+        validStateList = []
+        resetDepthCount = 0
+        depthCount = 1
+        i = 0
+        
         
         initial_state_tuple = Algorithms.state_to_tuple(self.initial_state)
         goal_state_tuple = Algorithms.state_to_tuple(self.goal_state)
@@ -79,6 +85,23 @@ class Algorithms:
                 state.move_right()
             ]
             
+            #print(moves)
+            #print("--------------------")
+        
+             
+            #recalculate depth every x nodes expanded 
+            for move in moves:
+                if move is not None:
+                    validState = validState + 1
+                    
+            #print(validState)
+            validStateList.append(validState)
+            #print(validStateList)
+            
+            
+            
+            
+            
             for move in moves:
                 if move is not None:
                     move_tuple = Algorithms.state_to_tuple(move)
@@ -86,12 +109,26 @@ class Algorithms:
                         # calculate the new depth for the move
                         new_depth = curr_depth + 1
                         if move_tuple not in depth_map or new_depth < depth_map[move_tuple]:
+                            
+                            resetDepthCount = resetDepthCount + 1
+                            #print("depth? :",resetDepthCount)
+                            if resetDepthCount == validStateList[i]:
+                                #reset depth
+                                depthCount = depthCount + 1
+                                print("depth = ", depthCount)
+                                print("resetting depth..")
+                                resetDepthCount = 0
+                                i = i + 1
+                            
+                            
                             depth_map[move_tuple] = new_depth
                             #map the current state as the parent of move_tuple, which is the key (child)
-                            parent_map[move_tuple] = (curr_state_tuple, "The best state to expand (g) = lala and h(n) = 0 is ")
+                            parent_map[move_tuple] = (curr_state_tuple, f"The best state to expand (g) = {depthCount} and h(n) = 0 is")
                             #print(parent_map)
                             order_determiner += 1
                             frontier.put((new_depth + order_determiner, move_tuple))
+                            
+                                
                             
         
         print("Goal not found.")

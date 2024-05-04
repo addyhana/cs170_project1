@@ -36,7 +36,6 @@ solution = search.ucs()
 print("easy:")
 print("Expanding state")
 for i in solution:
-    
     print(f"{i}\n")
 
 #toople = ((1, 2, 3), (4, 5, 0), (7, 8, 6))
