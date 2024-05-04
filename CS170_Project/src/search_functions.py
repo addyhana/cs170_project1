@@ -22,6 +22,7 @@ class Algorithms:
         return tuple(map(tuple, state))
     
     def ucs(self):
+        
         state = State()  # assuming State is your state representation class
         frontier = PriorityQueue()
         explored = set()
@@ -48,13 +49,21 @@ class Algorithms:
             if np.array_equal(curr_state, self.goal_state):
                 # reconstruct direct path using parent_map
                 path = []
+                #checks if curr_state_tuple exists as a key in parent_map
                 while curr_state_tuple in parent_map:
+                    #append the child state to the list
+                    
                     path.append(curr_state)
-                    curr_state_tuple = parent_map[curr_state_tuple]
-                    curr_state = np.array(curr_state_tuple)
+                    parent_info = parent_map[curr_state_tuple]  # Fetch parent info before updating curr_state_tuple
+                    curr_state_tuple = parent_info[0]  # Update to parent state
+                    additional_info = parent_info[1]  # Now safely fetch additional info
+                    path.append(additional_info)
+                    curr_state = np.array(curr_state_tuple)  # Convert parent state back into array
+                    
                 path.append(self.initial_state)  # add the initial state to the path
                 path.reverse()  # reverse to get path from start to goal
                 print("Goal reached at depth:", len(path)-1 )
+                
                 print("Most nodes in frontier at a single time:", biggest_queue )
                 print("Nodes expanded:", num_nodes)
                 return path
@@ -78,9 +87,12 @@ class Algorithms:
                         new_depth = curr_depth + 1
                         if move_tuple not in depth_map or new_depth < depth_map[move_tuple]:
                             depth_map[move_tuple] = new_depth
-                            parent_map[move_tuple] = curr_state_tuple
+                            #map the current state as the parent of move_tuple, which is the key (child)
+                            parent_map[move_tuple] = (curr_state_tuple, "The best state to expand (g) = lala and h(n) = 0 is ")
+                            #print(parent_map)
                             order_determiner += 1
                             frontier.put((new_depth + order_determiner, move_tuple))
+                            
         
         print("Goal not found.")
         print("Nodes expanded:", num_nodes)
