@@ -108,7 +108,10 @@ class State:
                     board) -> None:
         for x in board:
             print(*x, sep=' ')
-    
+
+    def euclidean_distance(state, goal_state):
+    # Calculate Euclidean distance between current state and goal state
+    return math.sqrt(np.sum((state - goal_state) ** 2))
     
     def heuristic(self):
         goal = self.set_goal()
