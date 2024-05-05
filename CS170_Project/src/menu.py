@@ -2,6 +2,7 @@ from src.state import State
 from src.search_functions import Algorithms
 import numpy as np
 
+# ensures given array is a valid puzzle (contains all the numbers)
 def check_array(starting_state: np.array):
     expected_values = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8])
     unique_vals = np.unique(starting_state)
@@ -9,6 +10,7 @@ def check_array(starting_state: np.array):
         return True
     return False
 
+# prompts user to build a puzzle
 def build_custom_puzzle():
     board = []
 
@@ -49,7 +51,7 @@ def main_menu():
         
             else:
                 print(f"Invalid input: {num}... please use only 1 or 2")
-                
+        # catches any thrown errors if inputs are invalid
         except ValueError as v:
             print(f"Error caught, please revise: {v}")
             
@@ -59,13 +61,13 @@ def main_menu():
     choice = input()
     if choice == '1': 
         search = Algorithms(initial_state=starting_state, goal_state=state.set_goal())
-        solution = search.ucs()
+        search.ucs()
     elif choice == '2': 
         search = Algorithms(initial_state=starting_state, goal_state=state.set_goal())
-        solution = search.missingTile()
+        search.missingTile()
     elif choice == '3': 
         search = Algorithms(initial_state=starting_state, goal_state=state.set_goal())
-        solution = search.eucDist()
+        search.eucDist()
     else:
         print("Invalid search algorithm chosen")    
 
