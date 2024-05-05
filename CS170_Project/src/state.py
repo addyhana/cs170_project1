@@ -2,6 +2,7 @@
 from typing import Optional
 import numpy as np
 import copy
+import math
 
 class State: 
     def __init__(self,
@@ -116,4 +117,21 @@ class State:
         if boxes_away > 0: 
             boxes_away = boxes_away - 1
         return boxes_away
+    
+    def eucFIX(self):
+        goal_state = self.set_goal()
+        state = self.current_state
+
+        distance = 0
+        for i in range(9):
+            zero_position = np.where(state == i)
+            zero_row, zero_col = zero_position[0][0], zero_position[1][0]
+
+            # target pos for blank tile (bottom right)
+            goal_position = np.where(goal_state == i)
+            goal_row, goal_col = goal_position[0][0], goal_position[1][0]
+
+            # euc dist from original to final
+            distance += np.sqrt((zero_row - goal_row)**2 + (zero_col - goal_col)**2)
         
+        return distance
