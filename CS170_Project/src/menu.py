@@ -1,4 +1,5 @@
 from src.state import State
+from src.search_functions import Algorithms
 import numpy as np
 
 def check_array(starting_state: np.array):
@@ -24,7 +25,6 @@ def main_menu():
     print("Welcome to the 8-puzzle solver.")
     state = State()
     flag = False
-    
     
     while flag == False: 
         try: 
@@ -57,7 +57,16 @@ def main_menu():
     print("Enter your choice of algorithm: ")
     print('Type "1" for Uniform Cost Search, "2" for A* with the Misplaced Tile heuristic, or "3" for A* with the Euclidean distance heuristic.')
     choice = input()
-    
+    if choice == '1': 
+        search = Algorithms(initial_state=starting_state, goal_state=state.set_goal())
+        solution = search.ucs()
+    elif choice == '2': 
+        search = Algorithms(initial_state=starting_state, goal_state=state.set_goal())
+        solution = search.missingTile()
+    elif choice == '3': 
+        print ("FIXME")
+    else:
+        print("Invalid search algorithm chosen")    
 
  
         

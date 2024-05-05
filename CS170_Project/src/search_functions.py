@@ -36,6 +36,8 @@ class Algorithms:
         
         frontier.put((0, initial_state_tuple))  # initial state with depth 0
         depth_map[initial_state_tuple] = 0
+
+        print ("Beginning uniform cost search... \n")
         
         while not frontier.empty():
             if frontier.qsize() > biggest_queue: 
@@ -54,9 +56,15 @@ class Algorithms:
                     curr_state = np.array(curr_state_tuple)
                 path.append(self.initial_state)  # add the initial state to the path
                 path.reverse()  # reverse to get path from start to goal
+                i = 0
+                for curr_state in path:
+                    state.set_state(curr_state)
+                    print("Expanding node with g(n) = ", i, "and h(n) = 0")
+                    i = i + 1
+                    print(f"{curr_state}\n")
                 print("Goal reached at depth:", len(path)-1 )
                 print("Most nodes in frontier at a single time:", biggest_queue )
-                print("Nodes expanded:", num_nodes)
+                print("Nodes expanded:", num_nodes, "\n")
                 return path
             
             explored.add(curr_state_tuple)
@@ -81,7 +89,6 @@ class Algorithms:
                             parent_map[move_tuple] = curr_state_tuple
                             #order_determiner += 1
                             frontier.put((new_depth + order_determiner, move_tuple))
-        
         print("Goal not found.")
         print("Nodes expanded:", num_nodes)
         return None
@@ -98,9 +105,11 @@ class Algorithms:
         
         initial_state_tuple = Algorithms.state_to_tuple(self.initial_state)
         goal_state_tuple = Algorithms.state_to_tuple(self.goal_state)
-        
-        frontier.put((0, initial_state_tuple))  # initial state with depth 0
+        state.set_state(state=self.initial_state)
+        frontier.put((state.heuristic(), initial_state_tuple))  # initial state with f = h 
         f_map[initial_state_tuple] = 0
+
+        print ("Beginning missing tile heuristic A* search... \n")
         
         while not frontier.empty():
             if frontier.qsize() > biggest_queue: 
@@ -121,9 +130,15 @@ class Algorithms:
                     curr_state = np.array(curr_state_tuple)
                 path.append(self.initial_state)  # add the initial state to the path
                 path.reverse()  # reverse to get path from start to goal
+                i = 0
+                for curr_state in path:
+                    state.set_state(curr_state)
+                    print("Expanding node with g(n) = ", i, "and h(n) = ", state.heuristic())
+                    i = i + 1
+                    print(f"{curr_state}\n")
                 print("Goal reached at depth:", len(path)-1 )
                 print("Most nodes in frontier at a single time:", biggest_queue )
-                print("Nodes expanded:", num_nodes)
+                print("Nodes expanded:", num_nodes, "\n")
                 return path
             
             explored.add(curr_state_tuple)

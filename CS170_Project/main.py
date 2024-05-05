@@ -10,20 +10,11 @@ from src.search_functions import Algorithms
 
 sys.path.append(os.getcwd()) #you can access files in the same directory this way
 
-
-
-#state = State()
-#board = state.build_board()
-#state.print_board(board=board)
-#print()
-#state.print_board(board=state.end)
-
-# main_menu()
+main_menu()
 
 state = State()
 # state.set_start())
 goal_state = state.set_goal()
-#print(new_state)
 
 
 # search = Algorithms(initial_state=state.set_start(start = np.array([[1, 2, 3], 
@@ -33,53 +24,38 @@ goal_state = state.set_goal()
 #                     goal_state=goal_state)
 
 # solution = search.ucs()
-# print("trivial:")
-# for i in solution:
-#     print(f"{i}\n")
 
-search = Algorithms(initial_state=state.set_start(start = np.array([[1, 2, 0], 
-                                            [4, 5, 3], 
-                                            [7, 8, 6]
-                                        ])),
-                    goal_state=goal_state)
+# search = Algorithms(initial_state=state.set_start(start = np.array([[1, 2, 0], 
+#                                             [4, 5, 3], 
+#                                             [7, 8, 6]
+#                                         ])),
+#                     goal_state=goal_state)
 
-solution = search.ucs()
-print("easy:")
-for i in solution:
-    print(f"{i}\n")
+# solution = search.ucs()
 
-search = Algorithms(initial_state=state.set_start(start = np.array([[1, 2, 0], 
-                                            [4, 5, 3], 
-                                            [7, 8, 6]
-                                        ])),
-                    goal_state=goal_state)
+# search = Algorithms(initial_state=state.set_start(start = np.array([[1, 2, 0], 
+#                                             [4, 5, 3], 
+#                                             [7, 8, 6]
+#                                         ])),
+#                     goal_state=goal_state)
 
-solution = search.missingTile()
-print("easy:")
-for i in solution:
-    print(f"{i}\n")
+# solution = search.missingTile()
 
-search = Algorithms(initial_state=state.set_start(start = np.array([[0, 1, 2], 
-                                            [4, 5, 3], 
-                                            [7, 8, 6]
-                                        ])),
-                    goal_state=goal_state)
+# search = Algorithms(initial_state=state.set_start(start = np.array([[0, 1, 2], 
+#                                             [4, 5, 3], 
+#                                             [7, 8, 6]
+#                                         ])),
+#                     goal_state=goal_state)
 
-solution = search.ucs()
-print("doable:")
-for i in solution:
-    print(f"{i}\n")
+# solution = search.ucs()
 
-search = Algorithms(initial_state=state.set_start(start = np.array([[0, 1, 2], 
-                                            [4, 5, 3], 
-                                            [7, 8, 6]
-                                        ])),
-                    goal_state=goal_state)
+# search = Algorithms(initial_state=state.set_start(start = np.array([[0, 1, 2], 
+#                                             [4, 5, 3], 
+#                                             [7, 8, 6]
+#                                         ])),
+#                     goal_state=goal_state)
 
-solution = search.missingTile()
-print("doable:")
-for i in solution:
-    print(f"{i}\n")
+# solution = search.missingTile()
 
 # search = Algorithms(initial_state=state.set_start(start = np.array([[8, 7, 1], 
 #                                             [6, 0, 2], 
@@ -88,6 +64,11 @@ for i in solution:
 #                     goal_state=goal_state)
 
 # solution = search.ucs()
-# print("oh boy:")
-# for i in solution:
-#     print(f"{i}\n")
+
+# search = Algorithms(initial_state=state.set_start(start = np.array([[8, 7, 1], 
+#                                             [6, 0, 2], 
+#                                             [5, 4, 3]
+#                                         ])),
+#                     goal_state=goal_state)
+
+# solution = search.missingTile()
