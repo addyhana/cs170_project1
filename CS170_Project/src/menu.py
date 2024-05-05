@@ -64,7 +64,8 @@ def main_menu():
         search = Algorithms(initial_state=starting_state, goal_state=state.set_goal())
         solution = search.missingTile()
     elif choice == '3': 
-        print ("FIXME")
+        search = Algorithms(initial_state=starting_state, goal_state=state.set_goal())
+        solution = search.eucDist()
     else:
         print("Invalid search algorithm chosen")    
 
