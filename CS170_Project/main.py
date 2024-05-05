@@ -59,27 +59,8 @@ print("easy:")
 for i in solution:
     print(f"{i}\n")
 
-search = Algorithms(initial_state=state.set_start(start = np.array([[0, 1, 2], 
-                                            [4, 5, 3], 
-                                            [7, 8, 6]
-                                        ])),
-                    goal_state=goal_state)
 
-solution = search.ucs()
-print("doable:")
-for i in solution:
-    print(f"{i}\n")
 
-search = Algorithms(initial_state=state.set_start(start = np.array([[0, 1, 2], 
-                                            [4, 5, 3], 
-                                            [7, 8, 6]
-                                        ])),
-                    goal_state=goal_state)
-
-solution = search.missingTile()
-print("doable:")
-for i in solution:
-    print(f"{i}\n")
 
 # search = Algorithms(initial_state=state.set_start(start = np.array([[8, 7, 1], 
 #                                             [6, 0, 2], 
