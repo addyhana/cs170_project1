@@ -28,7 +28,7 @@ search = Algorithms(initial_state=state.set_start(start = np.array([[1, 2, 3],
                                         ])),
                     goal_state=goal_state)
 print("TRIVIAL")
-solution = search.eucDist()
+solution = search.missingTile()
 
 search = Algorithms(initial_state=state.set_start(start = np.array([[1, 2, 3], 
                                             [4, 5, 6], 
@@ -36,7 +36,7 @@ search = Algorithms(initial_state=state.set_start(start = np.array([[1, 2, 3],
                                         ])),
                     goal_state=goal_state)
 print("VERY EASY")
-solution = search.eucDist()
+solution = search.missingTile()
 
 search = Algorithms(initial_state=state.set_start(start = np.array([[1, 2, 0], 
                                             [4, 5, 3], 
@@ -44,7 +44,7 @@ search = Algorithms(initial_state=state.set_start(start = np.array([[1, 2, 0],
                                         ])),
                     goal_state=goal_state)
 print("EASY")
-solution = search.eucDist()
+solution = search.missingTile()
 
 search = Algorithms(initial_state=state.set_start(start = np.array([[0, 1, 2], 
                                             [4, 5, 3], 
@@ -52,7 +52,7 @@ search = Algorithms(initial_state=state.set_start(start = np.array([[0, 1, 2],
                                         ])),
                     goal_state=goal_state)
 print("DOABLE")
-solution = search.eucDist()
+solution = search.missingTile()
 
 search = Algorithms(initial_state=state.set_start(start = np.array([[8, 7, 1], 
                                             [6, 0, 2], 
@@ -60,4 +60,4 @@ search = Algorithms(initial_state=state.set_start(start = np.array([[8, 7, 1],
                                         ])),
                     goal_state=goal_state)
 print("OH BOY")
-solution = search.eucDist()
+solution = search.ucs()
